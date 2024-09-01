@@ -128,9 +128,9 @@ def get_prop(db, type, prop='', peratom=False, E0={}):
     else:
         N = lambda a : 1
     if type == 'info':
-        return np.array(list(map(lambda a : a.info[prop]/N(a), db)))
+        return np.array(list(map(lambda a : a.get_potential_energy()/N(a), db)))
     if type == 'arrays':
-        return np.array(list(map(lambda a : a.arrays[prop]/N(a), db)), dtype=object)
+        return np.array(list(map(lambda a : a.get_forces()/N(a), db)), dtype=object)
     if type == 'cell':
         return np.array(list(map(lambda a : a.cell/N(a), db)))
     if type == 'meth':
